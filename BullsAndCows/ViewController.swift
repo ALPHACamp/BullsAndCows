@@ -77,9 +77,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         //see function checkAnswer
         
         // TODO: 4. update the hint
-        let hint = "1A2B"
+        let hintTuple = checkAnswer(guessString!)
+        let hintString = "\(hintTuple.a)A\(hintTuple.b)B"
         
-        hintArray.append((guessString!, hint))
+        hintArray.append((guessString!, hintString))
         
         // TODO: 5. update the constant "correct" if the guess is correct
         let correct = false
