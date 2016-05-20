@@ -83,7 +83,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         hintArray.append((guessString!, hintString))
         
         // TODO: 5. update the constant "correct" if the guess is correct
-        let correct = false
+        var correct = false
+        if hintTuple.a == 4{
+            correct = true
+        }
         if correct {
             let alert = UIAlertController(title: "Wow! You are awesome!", message: nil, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
