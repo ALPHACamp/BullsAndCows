@@ -74,7 +74,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             return
         }
         // TODO: 3. convert guessString to the data type you want to use and judge the guess
-        
+        //see function checkAnswer
         
         // TODO: 4. update the hint
         let hint = "1A2B"
@@ -99,6 +99,24 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func playAgain(sender: AnyObject) {
         setGame()
+    }
+    
+    func checkAnswer(inputStr:String) -> (a: Int, b: Int){
+        var a = 0
+        var b = 0
+        
+        //convert Str into Array<Character> to compare
+        let inputCharArray = Array(inputStr.characters)
+        let answerCharArray = Array(answerString.characters)
+        
+        for (index, element) in inputCharArray.enumerate() {
+            if element == answerCharArray[index] {
+                a += 1
+            }else if answerCharArray.contains(element){
+                b += 1
+            }
+        }
+        return (a, b)
     }
     
     // MARK: TableView
