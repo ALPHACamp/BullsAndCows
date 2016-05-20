@@ -98,7 +98,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     @IBAction func showAnswear(sender: AnyObject) {
         // TODO: 6. convert your answear to string(if it's necessary) and display it
-        //answearLabel.text = "\(answear)"
+        answearLabel.text = "\(answerString)"
     }
     
     @IBAction func playAgain(sender: AnyObject) {
