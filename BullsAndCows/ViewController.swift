@@ -32,7 +32,8 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     // TODO: 1. decide the data type you want to use to store the answear
-    var answear: UInt16!
+    var answerArray: Array<String> = []
+    var answerString: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     @IBAction func showAnswear(sender: AnyObject) {
         // TODO: 6. convert your answear to string(if it's necessary) and display it
-        answearLabel.text = "\(answear)"
+        //answearLabel.text = "\(answear)"
     }
     
     @IBAction func playAgain(sender: AnyObject) {
