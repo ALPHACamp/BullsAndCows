@@ -52,6 +52,17 @@ class ViewController: UIViewController, UITableViewDataSource {
         // TODO: 2. generate your answear here
         // You need to generate 4 random and non-repeating digits.
         // Some hints: http://stackoverflow.com/q/24007129/938380
+        
+        // empty answerArray
+        answerArray = []
+        
+        //ramdon pick an element and put into answer array then remove it from numberArray
+        var numberArray = ["0","1","2","3","4","5","6","7","8","9"]
+        for _ in 0...3{
+            let r = Int(arc4random_uniform(UInt32(numberArray.count)))
+            answerArray.append(numberArray.removeAtIndex(r))
+        }
+        answerString = answerArray.joinWithSeparator("")
     }
     
     @IBAction func guess(sender: AnyObject) {
