@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     // TODO: 1. decide the data type you want to use to store the answear
     var answerArray: Array<String> = []
     var answerString: String = ""
+    var guessArray: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,17 @@ class ViewController: UIViewController, UITableViewDataSource {
             self.presentViewController(alert, animated: true, completion: nil)
             return
         }
+        
+        if guessArray.contains(guessString!){
+            let alert = UIAlertController(title: "you should try different numbers!", message: nil, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            guessTextField.text = ""
+            return
+        }else{
+            guessArray.append(guessString!)
+        }
+        
         // TODO: 3. convert guessString to the data type you want to use and judge the guess
         //see function checkAnswer
         
