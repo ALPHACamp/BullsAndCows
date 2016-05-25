@@ -47,6 +47,8 @@ class ViewController: UIViewController, UITableViewDataSource {
         hintArray.removeAll()
         answearLabel.text = nil
         guessTextField.text = nil
+        guessArray = []
+        remainingTimeLabel.textColor = UIColor.blackColor()
     }
     
     func generateAnswear() {
@@ -67,6 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func guess(sender: AnyObject) {
+        
         let guessString = guessTextField.text
         guard guessString?.characters.count == 4 else {
             let alert = UIAlertController(title: "you should input 4 digits to guess!", message: nil, preferredStyle: .Alert)
@@ -106,6 +109,11 @@ class ViewController: UIViewController, UITableViewDataSource {
             guessButton.enabled = false
         } else {
             remainingTime! -= 1
+            if remainingTime <= 3 {
+                remainingTimeLabel.textColor = UIColor.redColor()
+            }else if remainingTime <= 6 {
+                remainingTimeLabel.textColor = UIColor.yellowColor()
+            }
         }
         guessTextField.text = ""
     }
