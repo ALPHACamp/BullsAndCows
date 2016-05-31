@@ -12,6 +12,7 @@
 		D355A5021CEDF6B40091EC95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D355A5001CEDF6B40091EC95 /* LaunchScreen.storyboard */; };
 		D355A50A1CEDF6C60091EC95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D355A5091CEDF6C60091EC95 /* Main.storyboard */; };
 		D355A50C1CEDF6EB0091EC95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355A50B1CEDF6EB0091EC95 /* ViewController.swift */; };
+		E86202971CFD77AD0030F798 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86202961CFD77AD0030F798 /* GameLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D355A5031CEDF6B40091EC95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D355A5091CEDF6C60091EC95 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D355A50B1CEDF6EB0091EC95 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E86202961CFD77AD0030F798 /* GameLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				D355A50B1CEDF6EB0091EC95 /* ViewController.swift */,
 				D355A5001CEDF6B40091EC95 /* LaunchScreen.storyboard */,
 				D355A5031CEDF6B40091EC95 /* Info.plist */,
+				E86202961CFD77AD0030F798 /* GameLogic.swift */,
 			);
 			path = BullsAndCows;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E86202971CFD77AD0030F798 /* GameLogic.swift in Sources */,
 				D355A50C1CEDF6EB0091EC95 /* ViewController.swift in Sources */,
 				D355A4F81CEDF6B40091EC95 /* AppDelegate.swift in Sources */,
 			);
@@ -280,6 +284,7 @@
 				D355A5081CEDF6B40091EC95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

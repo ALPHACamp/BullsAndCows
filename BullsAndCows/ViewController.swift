@@ -32,9 +32,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     // TODO: 1. decide the data type you want to use to store the answear
-    var answerArray: Array<String> = []
+    
     var answerString: String = ""
     var guessArray: Array<String> = []
+    var game = GameLogic()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
     func setGame() {
-        generateAnswear()
+        answerString = game.generateAnswear()
         remainingTime = 9
         hintArray.removeAll()
         answearLabel.text = nil
@@ -51,22 +52,6 @@ class ViewController: UIViewController, UITableViewDataSource {
         remainingTimeLabel.textColor = UIColor.blackColor()
     }
     
-    func generateAnswear() {
-        // TODO: 2. generate your answear here
-        // You need to generate 4 random and non-repeating digits.
-        // Some hints: http://stackoverflow.com/q/24007129/938380
-        
-        // empty answerArray
-        answerArray = []
-        
-        //ramdon pick an element and put into answer array then remove it from numberArray
-        var numberArray = ["0","1","2","3","4","5","6","7","8","9"]
-        for _ in 0...3{
-            let r = Int(arc4random_uniform(UInt32(numberArray.count)))
-            answerArray.append(numberArray.removeAtIndex(r))
-        }
-        answerString = answerArray.joinWithSeparator("")
-    }
     
     @IBAction func guess(sender: AnyObject) {
         
@@ -91,28 +76,15 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
         
         // TODO: 3. convert guessString to the data type you want to use and judge the guess
-        //see function checkAnswer
-        var a = 0
-        var b = 0
         
-        //convert Str into Array<Character> to compare
-        let inputCharArray = Array(guessString!.characters)
-        let answerCharArray = Array(answerString.characters)
+        let hintTuple = game.checkAnswer(guessString!)
         
-        for (index, element) in inputCharArray.enumerate() {
-            if element == answerCharArray[index] {
-                a += 1
-            }else if answerCharArray.contains(element){
-                b += 1
-            }
-        }
-
         // TODO: 4. update the hint
-        let hintString = "\(a)A\(b)B"
+        let hintString = "\(hintTuple.a)A\(hintTuple.b)B"
         hintArray.append((guessString!, hintString))
         
         // TODO: 5. update the constant "correct" if the guess is correct
-        let correct = a == 4
+        let correct = hintTuple.a == 4
         
         if correct {
             let alert = UIAlertController(title: "Wow! You are awesome!", message: nil, preferredStyle: .Alert)
@@ -141,23 +113,6 @@ class ViewController: UIViewController, UITableViewDataSource {
         setGame()
     }
     
-//    func checkAnswer(inputStr:String) -> (a: Int, b: Int){
-//        var a = 0
-//        var b = 0
-//        
-//        //convert Str into Array<Character> to compare
-//        let inputCharArray = Array(inputStr.characters)
-//        let answerCharArray = Array(answerString.characters)
-//        
-//        for (index, element) in inputCharArray.enumerate() {
-//            if element == answerCharArray[index] {
-//                a += 1
-//            }else if answerCharArray.contains(element){
-//                b += 1
-//            }
-//        }
-//        return (a, b)
-//    }
     
     // MARK: TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
