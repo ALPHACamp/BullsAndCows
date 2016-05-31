@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, GameLogicProtocol {
     @IBOutlet weak var guessTextField: UITextField!
     @IBOutlet weak var guessButton: UIButton!
     @IBOutlet weak var remainingTimeLabel: UILabel!
@@ -91,28 +91,13 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
         
         // TODO: 3. convert guessString to the data type you want to use and judge the guess
-        //see function checkAnswer
-        var a = 0
-        var b = 0
-        
-        //convert Str into Array<Character> to compare
-        let inputCharArray = Array(guessString!.characters)
-        let answerCharArray = Array(answerString.characters)
-        
-        for (index, element) in inputCharArray.enumerate() {
-            if element == answerCharArray[index] {
-                a += 1
-            }else if answerCharArray.contains(element){
-                b += 1
-            }
-        }
-
         // TODO: 4. update the hint
-        let hintString = "\(a)A\(b)B"
+        let hintTuple = checkAnswer(guessString!)
+        let hintString = "\(hintTuple.a)A\(hintTuple.b)B"
         hintArray.append((guessString!, hintString))
         
         // TODO: 5. update the constant "correct" if the guess is correct
-        let correct = a == 4
+        let correct = hintTuple.a == 4
         
         if correct {
             let alert = UIAlertController(title: "Wow! You are awesome!", message: nil, preferredStyle: .Alert)
@@ -141,23 +126,23 @@ class ViewController: UIViewController, UITableViewDataSource {
         setGame()
     }
     
-//    func checkAnswer(inputStr:String) -> (a: Int, b: Int){
-//        var a = 0
-//        var b = 0
-//        
-//        //convert Str into Array<Character> to compare
-//        let inputCharArray = Array(inputStr.characters)
-//        let answerCharArray = Array(answerString.characters)
-//        
-//        for (index, element) in inputCharArray.enumerate() {
-//            if element == answerCharArray[index] {
-//                a += 1
-//            }else if answerCharArray.contains(element){
-//                b += 1
-//            }
-//        }
-//        return (a, b)
-//    }
+    func checkAnswer(inputStr:String) -> (a: Int, b: Int){
+        var a = 0
+        var b = 0
+        
+        //convert Str into Array<Character> to compare
+        let inputCharArray = Array(inputStr.characters)
+        let answerCharArray = Array(answerString.characters)
+        
+        for (index, element) in inputCharArray.enumerate() {
+            if element == answerCharArray[index] {
+                a += 1
+            }else if answerCharArray.contains(element){
+                b += 1
+            }
+        }
+        return (a, b)
+    }
     
     // MARK: TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
